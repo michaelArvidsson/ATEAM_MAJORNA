@@ -76,7 +76,7 @@
   echo print_r($response) . "</pre><br>";
   echo "</div>";
 
-  $ch = curl_init($baseurl . 'api/resource/Patient/');
+  $ch = curl_init($baseurl . 'api/resource/Patient%20Appointment/HLC-APP-2020-00007');
   curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
 
   curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Accept: application/json'));
@@ -106,11 +106,40 @@
     echo "</div>";
   }
 
+  
+  //echo $response["data"]["time_slots"]["0"]["day"];
+/*   echo "<div style='background-color:darkslategrey; width:500px; height:300px;'>";
+  echo "<form method='post' action='Test_login.php'>";
+  echo '<select name="tidsbokning" id="tidsbokning">';
+  foreach ($response["data"]["time_slots"] as $key => $value) {
+    echo '<option>'.$value["day"].'</option>';
+  }
+  echo '<option>'.$value["from_time"].'</option>';
+  echo '</select>';
+  echo '<select name="tidsbokning" id="tidsbokning">';
+  foreach ($response["data"]["time_slots"] as $key => $value) {
+    echo '<option>'.$value["from_time"].'</option>';
+  }
+
+  echo '</select>';
+  echo '<select name="tidsbokning" id="tidsbokning">';
+  foreach ($response["data"]["time_slots"] as $key => $value) {
+    echo '<option>'.$value["to_time"].'</option>';
+  }
+
+  echo '</select>';
+  echo "</form>" */
+  ?>
+</div>
+
+<?php
   echo "<div style='background-color:lightgray; border:1px solid black'>";
   echo '$response<br><pre>';
-  echo print_r($response) . "</pre><br>";
+  echo print_r($response) . 
+  "</pre><br>";
   echo "</div>";
   ?>
+ 
 
 
 

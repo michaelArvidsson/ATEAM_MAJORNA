@@ -31,7 +31,7 @@
   $tmeout = 3600; // (3600=1hr)
 
   // här sätter ni er domän
-  $baseurl = 'https://ateam.erpnext.com/';
+  $baseurl = 'https://ateam.erpnext.com/api/resource/';
 
   try {
     $ch = curl_init($baseurl . 'api/method/login');
@@ -76,8 +76,9 @@
   echo print_r($response) . "</pre><br>";
   echo "</div>";
 
-  $ch = curl_init($baseurl . 'api/resource/Patient/Johntest');
-  curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
+  $ch = curl_init($baseurl . 'Patient%20Appointment');
+  curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
+  curl_setopt($ch, CURLOPT_POSTFIELDS, '{"name":"HLC-APP-2020-00666","patient":"Johntest","_user_tags":"Fysiskt besök"}');
 
   curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Accept: application/json'));
   curl_setopt($ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
@@ -105,6 +106,11 @@
     echo "<hr>";
     echo "</div>";
   }
+
+  echo "<div style='background-color:lightgray; border:1px solid black'>";
+  echo '$response<br><pre>';
+  echo print_r($response) . "</pre><br>";
+  echo "</div>";
   ?>
 
 
