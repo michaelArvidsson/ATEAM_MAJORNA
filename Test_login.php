@@ -31,7 +31,7 @@
   $tmeout = 3600; // (3600=1hr)
 
   // här sätter ni er domän
-  $baseurl = 'https://ateam.erpnext.com/api/resource/';
+  $baseurl = 'https://ateam.erpnext.com/';
 
   try {
     $ch = curl_init($baseurl . 'api/method/login');
@@ -76,9 +76,8 @@
   echo print_r($response) . "</pre><br>";
   echo "</div>";
 
-  $ch = curl_init($baseurl . 'Patient%20Appointment');
-  curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
-  curl_setopt($ch, CURLOPT_POSTFIELDS, '{"name":"HLC-APP-2020-00666","patient":"Benny","practitioner":"HLC-PRAC-2020-00010","appointment_type":"Sårvård","appointment_datetime":"2020-11-15 9:00:00"}');
+  $ch = curl_init($baseurl . 'api/resource/Practitioner%20Schedule/Schema%20X');
+  curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
 
   curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Accept: application/json'));
   curl_setopt($ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
@@ -107,11 +106,40 @@
     echo "</div>";
   }
 
+  
+  //echo $response["data"]["time_slots"]["0"]["day"];
+  echo "<div style='background-color:darkslategrey; width:500px; height:300px;'>";
+  echo "<form method='post' action='Test_login.php'>";
+  echo '<select name="tidsbokning" id="tidsbokning">';
+  foreach ($response["data"]["time_slots"] as $key => $value) {
+    echo '<option>'.$value["day"].'</option>';
+  }
+  echo '<option>'.$value["from_time"].'</option>';
+  echo '</select>';
+  echo '<select name="tidsbokning" id="tidsbokning">';
+  foreach ($response["data"]["time_slots"] as $key => $value) {
+    echo '<option>'.$value["from_time"].'</option>';
+  }
+
+  echo '</select>';
+  echo '<select name="tidsbokning" id="tidsbokning">';
+  foreach ($response["data"]["time_slots"] as $key => $value) {
+    echo '<option>'.$value["to_time"].'</option>';
+  }
+
+  echo '</select>';
+  echo "</form>"
+  ?>
+</div>
+
+<?php
   echo "<div style='background-color:lightgray; border:1px solid black'>";
   echo '$response<br><pre>';
-  echo print_r($response) . "</pre><br>";
+  echo print_r($response) . 
+  "</pre><br>";
   echo "</div>";
   ?>
+ 
 
 
 

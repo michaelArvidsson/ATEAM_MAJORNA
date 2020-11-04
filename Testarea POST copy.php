@@ -76,9 +76,9 @@
   echo print_r($response) . "</pre><br>";
   echo "</div>";
 
-  $ch = curl_init($baseurl . 'Patient%20Appointment');
+  $ch = curl_init($baseurl . 'Patient');
   curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
-  curl_setopt($ch, CURLOPT_POSTFIELDS, '{"name":"HLC-APP-2020-00666","patient":"Benny","practitioner":"HLC-PRAC-2020-00010","appointment_type":"Sårvård","appointment_datetime":"2020-11-15 9:00:00"}');
+  curl_setopt($ch, CURLOPT_POSTFIELDS, '{"first_name":"Eva","sex":"female"}');
 
   curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Accept: application/json'));
   curl_setopt($ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);

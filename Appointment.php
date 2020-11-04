@@ -76,7 +76,7 @@
   echo print_r($response) . "</pre><br>";
   echo "</div>";
 
-  $ch = curl_init($baseurl . 'api/resource/Patient%20Appointment/HLC-APP-2020-00007');
+  $ch = curl_init($baseurl . 'api/resource/Practitioner%20Schedule/Nurse%20veckoschema%20v40-52');
   curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
 
   curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Accept: application/json'));
@@ -107,8 +107,8 @@
   }
 
   
-  //echo $response["data"]["time_slots"]["0"]["day"];
-/*   echo "<div style='background-color:darkslategrey; width:500px; height:300px;'>";
+echo $response["data"]["time_slots"]["0"]["day"];
+echo "<div style='background-color:darkslategrey; width:500px; height:300px;'>";
   echo "<form method='post' action='Test_login.php'>";
   echo '<select name="tidsbokning" id="tidsbokning">';
   foreach ($response["data"]["time_slots"] as $key => $value) {
@@ -128,7 +128,7 @@
   }
 
   echo '</select>';
-  echo "</form>" */
+  echo "</form>"
   ?>
 </div>
 

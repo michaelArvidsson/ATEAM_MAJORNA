@@ -21,7 +21,7 @@
 
 <body>
   <h1>välkommen till Majornas Vårdcentral</h1>
-
+<pre>
   <?php
   ini_set('display_errors', 1);
   ini_set('display_startup_errors', 1);
@@ -76,9 +76,8 @@
   echo print_r($response) . "</pre><br>";
   echo "</div>";
 
-  $ch = curl_init($baseurl . 'Patient%20Appointment');
-  curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'POST');
-  curl_setopt($ch, CURLOPT_POSTFIELDS, '{"name":"HLC-APP-2020-00666","patient":"Benny","practitioner":"HLC-PRAC-2020-00010","appointment_type":"Sårvård","appointment_datetime":"2020-11-15 9:00:00"}');
+  $ch = curl_init($baseurl . 'Patient%20Encounter');
+  curl_setopt($ch, CURLOPT_CUSTOMREQUEST, 'GET');
 
   curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-Type: application/json', 'Accept: application/json'));
   curl_setopt($ch, CURLOPT_IPRESOLVE, CURL_IPRESOLVE_V4);
@@ -94,6 +93,32 @@
   $error_no = curl_errno($ch);
   $error = curl_error($ch);
   curl_close($ch);
+
+
+ /*  $arr_encounter=array();
+  array_push($arr_encounter,["data"]["0"]["name"]); 
+  echo print_r ($arr_encounter); */ 
+//create an array of encounter names
+  echo $response["data"]["0"]["name"];
+  for ($i = 0; $i <= 4; $i++) {
+    
+  foreach ($response["data"] as $key=> $value) {
+
+    foreach ($response["data"]["i"] as $key => $value) {
+      echo '<div>'.$value["name"].'</div>';
+
+  }
+   
+  }
+}
+
+
+
+  // $i=0;
+  // foreach ($arr_encounter as $value) {
+  //     $i++;
+  //     echo $i." ".$value."<br>";
+  // }
 
   if (!empty($error_no)) {
     echo "<div style='background-color:red'>";
@@ -112,7 +137,7 @@
   echo print_r($response) . "</pre><br>";
   echo "</div>";
   ?>
-
+</pre>
 
 
 </body>
